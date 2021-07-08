@@ -1,0 +1,27 @@
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    Wellcome
+                </div>
+                <div class="card-body">
+                    @if (@HttpContextAccessor.HttpContext.Session.GetString("FullName") != null)
+                    {
+                        <p>Name: @HttpContextAccessor.HttpContext.Session.GetString("FullName")</p>
+                        <p>Email: @HttpContextAccessor.HttpContext.Session.GetString("Email")</p>
+                        <a href="@Url.Action("Logout","Home")" class="btn btn-warning">Logout</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
