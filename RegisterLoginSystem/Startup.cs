@@ -7,7 +7,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.FeatureManagement;
-using RegisterLoginSystem.Models;
+using RegisterLoginSystem.Dal;
+using RegisterLoginSystem.Repository;
+using RegisterLoginSystem.Service;
 
 namespace RegisterLoginSystem
 {
@@ -26,6 +28,8 @@ namespace RegisterLoginSystem
             services.AddControllersWithViews();
             services.AddDbContext<Entities>(opt => opt.UseInMemoryDatabase("Users"));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
             services.AddSession(s => s.IdleTimeout = TimeSpan.FromMinutes(30));
             services.AddFeatureManagement();
             services.AddMvc();

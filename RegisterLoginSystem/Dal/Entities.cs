@@ -1,12 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using RegisterLoginSystem.Models;
 
-namespace RegisterLoginSystem.Models
+namespace RegisterLoginSystem.Dal
 {
-    public class Entities: DbContext
+    public class Entities : DbContext
     {
         public Entities(DbContextOptions<Entities> options)
             : base(options)

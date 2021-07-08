@@ -1,0 +1,67 @@
+﻿@model RegisterLoginSystem.Models.User
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row justify-content-md-center">
+    <div class="col-md-5">
+        @using (Html.BeginForm("Edit", "Home", FormMethod.Post))
+        {
+            //@Html.ValidationSummary()
+            @Html.AntiForgeryToken()
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Edit User</div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group" hidden>
+                        <div>UserId</div>
+                        @Html.EditorFor(m => m.UserId, "", new { @class = "form-control", @placeholder = "UserId" })
+                    </div>
+                    <div class="form-group" hidden>
+                        <div>First Name</div>
+                        @Html.EditorFor(m => m.FirstName, "", new { @class = "form-control", @placeholder = "First Name" })
+                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group" hidden>
+                        <div>Last Name</div>
+                        @Html.EditorFor(m => m.LastName, "", new { @class = "form-control", @placeholder = "Last Name" })
+                        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "badge badge-danger" })
+
+                    </div>
+                    <div class="form-group" hidden>
+                        <div>Email</div>
+                        @Html.EditorFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "badge badge-danger" })
+                        @if (ViewBag.error != null)
+                        {
+                            <span class="badge badge-danger">@ViewBag.error</span>
+                        }
+                    </div>
+                    <div class="form-group">
+                        <div>New Password</div>
+                        @Html.EditorFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group">
+                        <div>Confirm New Password</div>
+                        @Html.EditorFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confim Password" })
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group">
+                        <div>Show Settings</div>
+                        @Html.EditorFor(m => m.ShowSettings, new { @class = "form-control", @placeholder = "Show Settings" })
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="submit" class="btn btn-danger" value="Save" />
+                        @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "clsButtonFake" })
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+

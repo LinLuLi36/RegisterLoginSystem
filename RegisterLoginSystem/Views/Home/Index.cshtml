@@ -18,6 +18,7 @@
                         <p>Name: @HttpContextAccessor.HttpContext.Session.GetString("FullName")</p>
                         <p>Email: @HttpContextAccessor.HttpContext.Session.GetString("Email")</p>
                         <a href="@Url.Action("Logout","Home")" class="btn btn-warning">Logout</a>
+                        <a href="@Url.Action("Edit","Home")" class="btn btn-warning">Edit</a>
                     }
                 </div>
             </div>
